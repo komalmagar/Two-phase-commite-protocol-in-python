@@ -1,0 +1,28 @@
+import socket
+s=socket.socket()
+host=socket.gethostname()
+port=9000
+s.connect((host,port))
+print("connected to server")
+message=s.recv(1024)
+message=message.decode()
+print("Server message  :",message)
+while 1:
+    message=s.recv(1024)
+    message=message.decode()
+    print("Server   :",message)
+    new_message=input(str(">>  "))
+    new_message=new_message.encode()
+    s.send(new_message)
+    print("message sent")
+    message=s.recv(1024)
+    message=message.decode()
+    print("Server   :",message)
+    message=s.recv(1024)
+    message=message.decode()
+    print("Server   :",message)
+    print("Enter commit if you want")
+    new_message=input(str(">>  "))
+    new_message=new_message.encode()
+    s.send(new_message)
+    
